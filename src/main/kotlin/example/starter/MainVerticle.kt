@@ -23,13 +23,13 @@ class MainVerticle : AbstractVerticle() {
         }
       }
 
-    var mailTemplateStream = (getStreamFromRes("emailVerification.html") as InputStream).reader().readText()
+    var mailTemplateStream = (getStreamFromRes("mail/emailVerification.html") as InputStream).reader().readText()
     println(mailTemplateStream)
 
   }
 
   fun getStreamFromRes(fileName: String): InputStream? {
-    val stream = Object::class.java.getResourceAsStream("/$fileName")
+    val stream = Object::class.java.classLoader.getResourceAsStream("/$fileName")
 //    println(stream ?: "getStreamFromRes : Null stream, are you sure you are giving correct filename?")
     return stream
   }
